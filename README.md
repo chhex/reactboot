@@ -1,7 +1,7 @@
-![build](https://github.com///actions/workflows/build.yml/badge.svg)
+![build](https://github.com/chhex/spring-boot-react-crud-revisited/actions/workflows/build.yml/badge.svg?branch=main)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-
 
 # Revisited Baeldung Tutorial – React & Spring Boot CRUD
 
