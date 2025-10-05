@@ -1,3 +1,8 @@
+![build](https://github.com///actions/workflows/build.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
+
 # Revisited Baeldung Tutorial – React & Spring Boot CRUD
 
 Revisited Baeldung Tutorial CRUD Application with React and Spring Boot — see https://www.baeldung.com/spring-boot-react-crud — **with versions pinned** so it actually works with today’s ecosystem.
@@ -69,7 +74,6 @@ npm install
 
 **Commit both** `package.json` **and** `package-lock.json`.
 On CI/fresh clones use `npm ci` for reproducible installs.
-
 
 ---
 
