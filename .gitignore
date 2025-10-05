@@ -1,0 +1,17 @@
+# Maven
+target/
+
+# IDEs
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# Node/React
+frontend/node_modules/
+frontend/build/
+# logs
+**/npm-debug.log*
+**/yarn-error.log*
