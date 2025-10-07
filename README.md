@@ -20,7 +20,7 @@ The original article is ~4 years old and mixes libraries whose majors changed si
 - **react-cookie**: `4.1.1` (as in tutorial)
 
 > Key upgrade I made vs the article: **reactstrap v9** (not v8) to match **Bootstrap 5**.
-> We also recommend **React 18** (not 19) for max compatibility with Router v5. Otherwise the Navigation will not work reliable.
+> Also recommended, i found out **React 18** (not 19) for max compatibility with Router v5. Otherwise the Navigation will not work reliable.
 
 ## Project layout
 
