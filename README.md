@@ -9,7 +9,7 @@ Revisited Baeldung Tutorial CRUD Application with React and Spring Boot — see 
 
 ## Why pin versions?
 
-The original article is ~4 years old and mixes libraries whose majors changed since. We locked a combo that’s stable with the tutorial code:
+The original article is ~4 years old and mixes libraries whose majors changed since. I locked a combo that i think is stable with the tutorial code:
 
 - **React**: `18.3.1`
 - **react-dom**: `18.3.1`
@@ -19,8 +19,8 @@ The original article is ~4 years old and mixes libraries whose majors changed si
 - **@popperjs/core**: `^2` (Bootstrap’s dependency)
 - **react-cookie**: `4.1.1` (as in tutorial)
 
-> Key upgrade we made vs the article: **reactstrap v9** (not v8) to match **Bootstrap 5**.
-> We also recommend **React 18** (not 19) for max compatibility with Router v5.
+> Key upgrade I made vs the article: **reactstrap v9** (not v8) to match **Bootstrap 5**.
+> We also recommend **React 18** (not 19) for max compatibility with Router v5. Otherwise the Navigation will not work reliable.
 
 ## Project layout
 
@@ -49,9 +49,10 @@ npm start
 Open: http://localhost:3000
 
 > **Note:** In development, `package.json` may contain `"proxy": "http://localhost:8080"`.
-> In production we don’t use this proxy—see the Production notes below.
 
 ## Fresh install (freezing the working versions)
+
+The following helped me to get around the version "mess" i encountered. Full disclosure: i am a newbie to the Javascript Eco culture.
 
 From `reactboot/frontend`:
 
@@ -77,29 +78,42 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 
 ---
 
-## TODO — Modernization & Testing
+## TODO
 
+- **Build Packaging with Maven**
+  
+  - As in Tutorial
 - **Router v6 upgrade** (while staying on React 18)
+  
+  - `npm i react-router-dom@6`
+  - Migrat
+- **Router v6 upgrade** (while staying on React 18)
+  
   - `npm i react-router-dom@6`
   - Migrate `Switch` → `Routes`, `component` → `element`
 - **React 19** (after Router v6 is clean)
+  
   - `npm i --save-exact react@19 react-dom@19`
   - Fix any peer-dep warnings
 - **Convert classes → function components + hooks**
+  
   - `useState`, `useEffect`, `useNavigate` (v6)
 - **Type safety**
+  
   - Add TypeScript or PropTypes
-- **Testing**
+- **Testing (Optional)**
+  
   - Unit/UI: Jest + React Testing Library
-  - Backend: Spring Boot Test (slice + integration)
-  - E2E: Playwright or Cypress (basic CRUD flow)
+  - Backend: Spring Boot Test
+  - 
 - **CI**
+  
   - GitHub Actions: `frontend (npm ci && npm run build)` then `mvn -B package`
-- **Infra**
+  - Or only via Maven 
+- **Infra (Optional)**
+  
   - Env vars for API base (`REACT_APP_API_BASE=/api`)
   - NGINX/Ingress with `/api` proxy, SPA fallback
-
----
 
 ## Credits
 
