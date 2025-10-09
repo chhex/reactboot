@@ -86,10 +86,6 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 - **Router v6 upgrade** (while staying on React 18)
   
   - `npm i react-router-dom@6`
-  - Migrat
-- **Router v6 upgrade** (while staying on React 18)
-  
-  - `npm i react-router-dom@6`
   - Migrate `Switch` → `Routes`, `component` → `element`
 - **React 19** (after Router v6 is clean)
   
@@ -98,9 +94,7 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 - **Convert classes → function components + hooks**
   
   - `useState`, `useEffect`, `useNavigate` (v6)
-- **Type safety**
-  
-  - Add TypeScript or PropTypes
+  - 
 - **Testing (Optional)**
   
   - Unit/UI: Jest + React Testing Library
