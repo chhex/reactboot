@@ -12,6 +12,7 @@ target/
 # Node/React
 frontend/node_modules/
 frontend/build/
+src/main/resources/static/
 # logs
 **/npm-debug.log*
 **/yarn-error.log*

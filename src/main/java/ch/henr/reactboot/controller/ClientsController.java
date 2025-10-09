@@ -29,13 +29,14 @@ public class ClientsController {
 
     @GetMapping
     public List<Client> getClients() {
-        return clientRepository.findAll();
+        var clients = clientRepository.findAll();
+        return clients;
     }
 
     @GetMapping("/{id}")
     public Client getClient(@PathVariable Long id) {
-        return clientRepository.findById(id).orElseThrow(RuntimeException::new);
-    }
+        var client = clientRepository.findById(id).orElseThrow(RuntimeException::new);
+        return client;   }
 
     @PostMapping
     public ResponseEntity<Client> createClient(@RequestBody Client client) throws URISyntaxException {
