@@ -7,11 +7,11 @@
 
 Revisited Baeldung Tutorial CRUD Application with React and Spring Boot — see https://www.baeldung.com/spring-boot-react-crud — **with versions pinned** so it actually works with today’s ecosystem.
 
-## Why pin versions?
+The original article is ~4 years old and mixes libraries whose majors changed since.
 
-The original article is ~4 years old and mixes libraries whose majors changed since. I locked a combo that i think is stable with the tutorial code:
+The versions which actually worked without changing the code, where:
 
-- **React**: `18.3.1`
+- **React**: `18.3.1
 - **react-dom**: `18.3.1`
 - **react-router-dom**: `5.3.4` (v5 API used in the tutorial)
 - **reactstrap**: `^9` (required for Bootstrap 5)
@@ -19,8 +19,13 @@ The original article is ~4 years old and mixes libraries whose majors changed si
 - **@popperjs/core**: `^2` (Bootstrap’s dependency)
 - **react-cookie**: `4.1.1` (as in tutorial)
 
-> Key upgrade I made vs the article: **reactstrap v9** (not v8) to match **Bootstrap 5**.
+> The Key upgrade I initally made vs the article: **reactstrap v9** (not v8) to match **Bootstrap 5**.
 > Also recommended, i found out **React 18** (not 19) for max compatibility with Router v5. Otherwise the Navigation will not work reliable.
+
+
+The goal is to "modernize" the React Frontend to
+use React V19, Router V6 and Bootstrap 5
+
 
 ## Project layout
 
@@ -28,8 +33,13 @@ The original article is ~4 years old and mixes libraries whose majors changed si
 reactboot/               # Maven Spring Boot backend
 └── frontend/            # React app (npm)
 ```
+## Maven
+
+TODO
 
 ## Dev setup
+
+### Spring Boot only
 
 Backend (port 8080):
 
@@ -37,6 +47,8 @@ Backend (port 8080):
 cd reactboot
 mvn spring-boot:run
 ```
+
+### Frontend separate 
 
 Frontend (port 3000, proxies to 8080):
 
@@ -49,6 +61,9 @@ npm start
 Open: http://localhost:3000
 
 > **Note:** In development, `package.json` may contain `"proxy": "http://localhost:8080"`.
+
+
+
 
 ## Fresh install (freezing the working versions)
 
@@ -80,30 +95,24 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 
 ## TODO
 
-- **Build Packaging with Maven**
+- **Maven Profiles**
   
-  - As in Tutorial
-- **Router v6 upgrade** (while staying on React 18)
-  
-  - `npm i react-router-dom@6`
-  - Migrate `Switch` → `Routes`, `component` → `element`
-- **React 19** (after Router v6 is clean)
+  - Switch between running with Spring Boot only or starting the Dev Server seperate
+- **React 19**
   
   - `npm i --save-exact react@19 react-dom@19`
   - Fix any peer-dep warnings
 - **Convert classes → function components + hooks**
   
   - `useState`, `useEffect`, `useNavigate` (v6)
-  - 
 - **Testing (Optional)**
   
   - Unit/UI: Jest + React Testing Library
   - Backend: Spring Boot Test
-  - 
+
 - **CI**
-  
-  - GitHub Actions: `frontend (npm ci && npm run build)` then `mvn -B package`
-  - Or only via Maven 
+
+  - Or only via Maven
 - **Infra (Optional)**
   
   - Env vars for API base (`REACT_APP_API_BASE=/api`)
