@@ -22,10 +22,8 @@ The versions which actually worked without changing the code, where:
 > The Key upgrade I initally made vs the article: **reactstrap v9** (not v8) to match **Bootstrap 5**.
 > Also recommended, i found out **React 18** (not 19) for max compatibility with Router v5. Otherwise the Navigation will not work reliable.
 
-
 The goal is to "modernize" the React Frontend to
 use React V19, Router V6 and Bootstrap 5
-
 
 ## Project layout
 
@@ -33,22 +31,23 @@ use React V19, Router V6 and Bootstrap 5
 reactboot/               # Maven Spring Boot backend
 └── frontend/            # React app (npm)
 ```
-## Maven
-
-TODO
-
 ## Dev setup
 
-### Spring Boot only
+### Single Artifact
 
-Backend (port 8080):
+Running the Application as Single Artifact with Spring Boot
 
 ```bash
-cd reactboot
-mvn spring-boot:run
+./mvnw clean spring-boot:run -Psingle-art
 ```
 
-### Frontend separate 
+### Frontend and Backend seperate Process
+
+Backend (Spring Boot(
+
+bash
+./mvnw clean spring-boot:run
+``
 
 Frontend (port 3000, proxies to 8080):
 
@@ -62,9 +61,6 @@ Open: http://localhost:3000
 
 > **Note:** In development, `package.json` may contain `"proxy": "http://localhost:8080"`.
 
-
-
-
 ## Fresh install (freezing the working versions)
 
 The following helped me to get around the version "mess" i encountered. Full disclosure: i am a newbie to the Javascript Eco culture.
@@ -76,7 +72,7 @@ From `reactboot/frontend`:
 rm -rf node_modules package-lock.json
 
 # Install exact React + Router v5
-npm i --save-exact react@18.3.1 react-dom@18.3.1 react-router-dom@5.3.4
+npm i --save-exact react@18.3.1 react-dom@18.3.1 react-router-dom@6
 
 # Install Bootstrap 5 compatible UI stack
 npm i reactstrap@^9 bootstrap@^5 @popperjs/core@^2 react-cookie@4.1.1
@@ -95,9 +91,6 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 
 ## TODO
 
-- **Maven Profiles**
-  
-  - Switch between running with Spring Boot only or starting the Dev Server seperate
 - **React 19**
   
   - `npm i --save-exact react@19 react-dom@19`
@@ -109,9 +102,8 @@ On CI/fresh clones use `npm ci` for reproducible installs.
   
   - Unit/UI: Jest + React Testing Library
   - Backend: Spring Boot Test
-
 - **CI**
-
+  
   - Or only via Maven
 - **Infra (Optional)**
   
