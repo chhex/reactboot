@@ -25,12 +25,26 @@ The versions which actually worked without changing the code, where:
 The goal is to "modernize" the React Frontend to
 use React V19, Router V6 and Bootstrap 5
 
+In this version, i migrated:
+
+- **Npm to use Vite**
+
+- **React 19**
+  
+  - `npm i --save-exact react@19 react-dom@19`
+  - Fixed any peer-dep warnings
+  - 
+- **Convert classes → function components + hooks**
+  
+  - `useState`, `useEffect`, `useNavigate` (v6)
+
 ## Project layout
 
 ```
 reactboot/               # Maven Spring Boot backend
 └── frontend/            # React app (npm)
 ```
+
 ## Dev setup
 
 ### Single Artifact
@@ -91,14 +105,10 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 
 ## TODO
 
-- **React 19**
-  
-  - `npm i --save-exact react@19 react-dom@19`
-  - Fix any peer-dep warnings
-- **Convert classes → function components + hooks**
-  
-  - `useState`, `useEffect`, `useNavigate` (v6)
-- **Testing (Optional)**
+- **Migrate Pom Single Artifact Build**
+  - To use Vite 
+
+- **Testing**
   
   - Unit/UI: Jest + React Testing Library
   - Backend: Spring Boot Test
