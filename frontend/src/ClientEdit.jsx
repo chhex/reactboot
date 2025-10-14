@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Input, Label } from 'reactstrap';
+import { apiUrl } from './apiBase';
 
 export default function ClientEdit() {
     const [item, setItem] = useState({ id: undefined, name: '', email: '' });
@@ -23,7 +24,8 @@ export default function ClientEdit() {
         try {
             setLoading(true);
             setError(null);
-            const res = await fetch(`/clients/${_id}`);
+            const path = `clients/${_id}`;
+            const res = await fetch(apiUrl(path));
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             setItem(data ?? { id: _id, name: '', email: '' });
@@ -37,6 +39,7 @@ export default function ClientEdit() {
 
     useEffect(() => {
         // runs on mount and whenever :id changes
+        console.log('Loading item, id:', id);
         loadItem(id);
     }, [id, loadItem]);
 
@@ -51,7 +54,7 @@ export default function ClientEdit() {
             setLoading(true);
             setError(null);
             const method = item.id ? 'PUT' : 'POST';
-            const url = `/clients${item.id ? `/${item.id}` : ''}`;
+            const url = apiUrl(`clients${item.id ? `/${item.id}` : ''}`);
             const res = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },

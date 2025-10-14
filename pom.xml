@@ -63,13 +63,9 @@
 
 	<profiles>
 		<profile>
-			<id>single-art</id>
-			<properties>
-				<spring-boot.run.profiles>single-art</spring-boot.run.profiles>
-			</properties>
+			<id>single-jar</id>
 			<build>
 				<plugins>
-					<!-- Run npm ci & build in /frontend before packaging -->
 					<plugin>
 						<groupId>com.github.eirslett</groupId>
 						<artifactId>frontend-maven-plugin</artifactId>
@@ -79,65 +75,71 @@
 						</configuration>
 						<executions>
 							<execution>
-								<id>install-node-npm</id>
+								<id>install-node-and-npm</id>
 								<goals>
 									<goal>install-node-and-npm</goal>
 								</goals>
 								<configuration>
-									<nodeVersion>v20.11.1</nodeVersion>
+									<!-- Match what worked locally -->
+									<nodeVersion>v20.19.0</nodeVersion>
+									<npmVersion>10.9.3</npmVersion>
 								</configuration>
 							</execution>
+
 							<execution>
 								<id>npm-ci</id>
+								<phase>generate-resources</phase>
 								<goals>
 									<goal>npm</goal>
 								</goals>
 								<configuration>
-									<arguments>ci</arguments>
+									<arguments>ci --foreground-scripts --loglevel=verbose</arguments>
 								</configuration>
-								<phase>generate-resources</phase>
 							</execution>
+
 							<execution>
-								<id>npm-build</id>
+								<id>vite-build</id>
+								<phase>generate-resources</phase>
 								<goals>
 									<goal>npm</goal>
 								</goals>
 								<configuration>
 									<arguments>run build</arguments>
 								</configuration>
-								<phase>generate-resources</phase>
 							</execution>
 						</executions>
 					</plugin>
 
-					<!-- Copy Vite dist/ into Spring Boot's static/ at package time -->
 					<plugin>
 						<artifactId>maven-resources-plugin</artifactId>
 						<version>3.3.1</version>
 						<executions>
 							<execution>
-								<id>copy-vite-dist</id>
+								<id>copy-frontend-dist</id>
 								<phase>process-resources</phase>
 								<goals>
 									<goal>copy-resources</goal>
 								</goals>
 								<configuration>
+									<overwrite>true</overwrite>
 									<outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
 									<resources>
 										<resource>
-											<directory>frontend/dist</directory>
+											<directory>${project.basedir}/frontend/dist</directory>
 											<filtering>false</filtering>
+											<includes>
+												<include>**/*</include>
+											</includes>
 										</resource>
 									</resources>
 								</configuration>
 							</execution>
 						</executions>
 					</plugin>
-
 				</plugins>
 			</build>
-
 		</profile>
+
 
 	</profiles>
 

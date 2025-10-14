@@ -8,6 +8,9 @@ target/
 .classpath
 .settings/
 .vscode/
+dist/
+node/
+
 
 # Node/React
 frontend/node_modules/

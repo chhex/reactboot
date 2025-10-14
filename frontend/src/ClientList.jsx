@@ -2,6 +2,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { apiUrl } from './apiBase';
 
 export default function ClientList() {
   const [clients, setClients] = useState([]);
@@ -13,7 +14,7 @@ export default function ClientList() {
 
     (async () => {
       try {
-        const res = await fetch('/clients');
+        const res = await fetch(apiUrl('clients'));
         const data = await res.json();
         if (!ignore) {
           setClients(Array.isArray(data) ? data : []);
@@ -30,7 +31,7 @@ export default function ClientList() {
 
   const remove = useCallback(async (id) => {
     try {
-      await fetch(`/clients/${id}`, {
+      await fetch(apiUrl(`clients/${id}`), {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json',

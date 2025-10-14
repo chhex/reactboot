@@ -1,19 +1,25 @@
 {
+  "name": "frontend",
+  "type": "module",
+
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.8",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-router-dom": "6.30.1",
     "reactstrap": "^9.2.3"
-  },
+  },  
   "scripts": {
     "dev": "vite",
+    "dev:9090": "cross-env VITE_BACKEND_PORT=9090 vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:localapi": "cross-env VITE_API_BASE=$VITE_API_BASE vite preview"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@vitejs/plugin-react": "^5.0.4",
     "vite": "^7.1.9"
   }
+
 }
