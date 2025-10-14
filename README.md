@@ -105,6 +105,8 @@ On CI/fresh clones use `npm ci` for reproducible installs.
 
 ## TODO
 
+- **Clean-up unnecessary files**
+
 - **Migrate Pom Single Artifact Build**
   - To use Vite 
 
