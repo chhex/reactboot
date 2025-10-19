@@ -101,9 +101,7 @@ npm install
 **Commit both** `package.json` **and** `package-lock.json`.
 On CI/fresh clones use `npm ci` for reproducible installs.
 
----
-
-## TODO
+## Next Steps
 
 - **Testing**
   
